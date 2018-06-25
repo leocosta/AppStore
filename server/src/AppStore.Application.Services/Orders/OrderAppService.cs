@@ -92,29 +92,5 @@ namespace AppStore.Application.Services.Users
 
             return response;
         }
-
-        public void ProcessPayment(int orderId, PaymentInfo paymentInfo)
-        {
-            var order = _orderRepository.Get(orderId);
-            if (order == null)
-            {
-
-            }
-
-                //var order = new OrdersDomain.Order();
-                //var result = new OrdersDomain.PaymentResult("", Guid.NewGuid());
-                //var paymentInfo = new OrdersDomain.PaymentInfo();
-                //paymentInfo.
-
-                //order.PaymentReceived()
-
-                // carregar pedido
-                // chamar metodo PaymentReceived passando paymentInfo
-                // obter retorno do pagamento
-                // atualizar status do pedido
-                // enviar email
-
-
-        }
     }
 }
