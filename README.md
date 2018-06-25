@@ -16,4 +16,4 @@ bin\windows\zookeeper-server-start.bat config\zookeeper.properties
 bin\windows\kafka-server-start.bat config\server.properties
 ```
 
-### Para executar a aplicação cliente, [siga as instruções aqui.](https://github.com/leocosta/AppStore/edit/master/client/README.md)
+### Para executar a aplicação cliente, [siga as instruções aqui.](https://github.com/leocosta/AppStore/tree/master/client#how-to-start)
