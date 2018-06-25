@@ -1,0 +1,8 @@
+**\.vs
+**\packages
+
+!\packages\repositories.config
+
+**/bin
+**/obj
+**/*.vspscc

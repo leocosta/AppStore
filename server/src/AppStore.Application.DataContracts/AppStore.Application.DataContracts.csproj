@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9AA65481-6F3F-45EA-88FA-CC0533BEFD3D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AppStore.Application.DataContracts</RootNamespace>
+    <AssemblyName>AppStore.Application.DataContracts</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Apps\GetAppsResponse.cs" />
+    <Compile Include="Apps\GetAppResponse.cs" />
+    <Compile Include="Apps\App.cs" />
+    <Compile Include="Authentication\AuthenticationResponse.cs" />
+    <Compile Include="Authentication\AuthenticationRequest.cs" />
+    <Compile Include="Authentication\Credential.cs" />
+    <Compile Include="BaseRequest.cs" />
+    <Compile Include="BaseResponse.cs" />
+    <Compile Include="CreditCards\CreditCard.cs" />
+    <Compile Include="CreditCards\CreditCardBrand.cs" />
+    <Compile Include="Errors\Error.cs" />
+    <Compile Include="Orders\CreateOrderRequest.cs" />
+    <Compile Include="Orders\CreateOrderResponse.cs" />
+    <Compile Include="Orders\Order.cs" />
+    <Compile Include="Orders\PaymentInfo.cs" />
+    <Compile Include="Orders\ValidatableOrder.cs" />
+    <Compile Include="Payment\PaymentResult.cs" />
+    <Compile Include="Payment\ProcessPaymentRequest.cs" />
+    <Compile Include="Payment\ProcessPaymentResponse.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Users\Address.cs" />
+    <Compile Include="Users\GetUserCreditCardsResponse.cs" />
+    <Compile Include="Users\GetUserResponse.cs" />
+    <Compile Include="Users\CreateUserResponse.cs" />
+    <Compile Include="Users\CreateUserRequest.cs" />
+    <Compile Include="Users\Gender.cs" />
+    <Compile Include="Users\User.cs" />
+    <Compile Include="Users\ValidatableUser.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
