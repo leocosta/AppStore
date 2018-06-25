@@ -1,5 +1,5 @@
 # AppStore
-Aplicativo de exemplo em utilizando as tecnologias ASP.NET Web API, Angular 6 e Apache Kafka
+Aplicação de exemplo utilizando as tecnologias Angular 6, ASP.NET Web API e Apache Kafka.
 
 ## Configuração
 
