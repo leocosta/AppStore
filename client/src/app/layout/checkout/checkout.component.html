@@ -1,0 +1,114 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Finalizar Compra'"></app-page-header>
+
+    <div class="container">
+        <div class="row">
+          <form #f="ngForm" [formGroup]="checkoutForm" (ngSubmit)="purchase()" novalidate role="form">
+            <div class="col-md-12">
+              <h4>Item do Pedido</h4>
+              <div class="row my-4">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-10 text-secondary"><strong>{{ order?.app?.name }}</strong></div>
+                        <div class="col-md-2 text-right text-secondary">{{ order?.app?.price | currency }}</div>
+                    </div>
+                </div>
+              </div>
+              <h4 *ngIf="creditCards?.length">Selecione um de seus cartões de crédito</h4>
+              <table *ngIf="creditCards?.length" class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th colspan="2">Cartão</th>
+                    <th>Vencimento</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let creditCard of creditCards">
+                    <td><input [(ngModel)]="order.paymentInfo.creditCard.creditCardId" (change)="configureValidation()"  [value]="creditCard.creditCardId" formControlName="creditCard.creditCardId" name="creditCard.creditCardId" type="radio" /></td>
+                    <td>
+                      <div class="brands" [ngClass]="creditCard.brand | lowercase"></div>
+                    </td>
+                    <td>
+                      <span class="text-muted">final {{creditCard.lastDigits}}</span>
+                    </td>
+                    <td>{{creditCard.expMonth}}/{{creditCard.expYear}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h4 *ngIf="creditCards?.length" class="my-4">Ou informe outro cartão</h4>
+              <h4 *ngIf="!creditCards?.length">Informe os dados do cartão de crédito</h4>
+             
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="brands visa pull-left"></div>
+                  <div class="brands mastercard pull-left"></div>
+                  <div class="brands hipercard pull-left"></div>
+                  <div class="brands amex pull-left"></div>
+                  <div class="brands diners pull-left"></div>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="creiditCardNumber">Número do Cartão</label>
+                    <div class="input-group" [ngClass]="{ 'has-error': !checkoutForm.controls['creditCard.number'].valid && f.submitted }">
+                      <input [(ngModel)]="order.paymentInfo.creditCard.number" formControlName="creditCard.number" numberOnly maxlength="16" type="text" class="form-control" name="creditCard.number" placeholder="Número do Cartão">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                      <label for="holderName">Titular do cartão</label>
+                      <div class="input-group" [ngClass]="{ 'has-error': !checkoutForm.controls['creditCard.holderName'].valid && f.submitted }">
+                          <input [(ngModel)]="order.paymentInfo.creditCard.holderName" formControlName="creditCard.holderName" maxlength="30" type="text" class="form-control" name="creditCard.holderName" placeholder="Nome do Titular do Cartão">
+                      </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label for="cardExpiry">
+                      <span class="hidden-xs">Expira em</span>
+                    </label>
+                    <div class="row">
+                      <div class="col-md-4" [ngClass]="{ 'has-error': !checkoutForm.controls['creditCard.expMonth'].valid && f.submitted }">
+                          <input [(ngModel)]="order.paymentInfo.creditCard.expMonth" formControlName="creditCard.expMonth" numberOnly type="text" class="form-control" name="creditCard.expMonth" placeholder="Mês" autocomplete="cc-exp" maxlength="2">
+                      </div>
+                      <div class="col-md-4" [ngClass]="{ 'has-error': !checkoutForm.controls['creditCard.expYear'].valid && f.submitted }">
+                          <input [(ngModel)]="order.paymentInfo.creditCard.expYear" formControlName="creditCard.expYear" numberOnly type="text" class="form-control" name="creditCard.expYear" placeholder="Ano" autocomplete="cc-exp" maxlength="4">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                      <label for="securityCode">Código de Segurança</label>
+                      <div [ngClass]="{ 'has-error': !checkoutForm.controls['creditCard.securityCode'].valid && f.submitted }">
+                          <input [(ngModel)]="order.paymentInfo.creditCard.securityCode" formControlName="creditCard.securityCode" numberOnly type="text" class="form-control" name="creditCard.securityCode" placeholder="CVC" maxlength="4">
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="checkbox">
+                      <label>
+                          <input [(ngModel)]="order.paymentInfo.saveCreditCard" formControlName="saveCreditCard" type="checkbox" class="text-muted"> Salvar dados do pagamento para a próxima compra
+                      </label>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <button class="btn btn-warning btn-lg btn-block" type="submit">Finalizar Compra</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+</div>

@@ -6,3 +6,4 @@
 **/bin
 **/obj
 **/*.vspscc
+**/node_modules

@@ -1,0 +1,107 @@
+<div class="login-page" [@routerTransition]>
+    <div class="row justify-content-md-center">
+        <div class="col-md-6">
+            <img class="user-avatar" src="assets/images/logo.png" width="150px" />
+            <h1>App Store</h1>
+            <form #f="ngForm" [formGroup]="signUpForm" (ngSubmit)="register()" novalidate class="text-left" role="form">
+                <div class="form-content">
+                    <div [ngClass]="{ 'has-error': !signUpForm.controls['name'].valid && f.submitted }" class="form-group">
+                        <label for="name">Nome completo</label>
+                        <input [(ngModel)]="user.name" formControlName="name" type="text" class="form-control" id="name">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div [ngClass]="{ 'has-error': !signUpForm.controls['SSN'].valid && f.submitted }" class="form-group">
+                                <label for="ssn">CPF</label>
+                                <input [(ngModel)]="user.ssn" formControlName="SSN" type="text" maxlength="11" class="form-control" id="ssn">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div [ngClass]="{ 'has-error': !signUpForm.controls['birthDate'].valid && f.submitted }" class="form-group">
+                                <label for="birthDate">Nascimento</label>
+                                <div class="input-group datepicker-input">
+                                    <input class="form-control" name="birthDate" (dateSelect)="onDateSelection($event)" formControlName="birthDate" ngbDatepicker
+                                        #d="ngbDatepicker">
+                                    <button class="input-group-addon" (click)="d.toggle()" type="button">
+                                        <span class="fa fa-calendar"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p>Sexo</p>
+                        <input id="male" name="gender" type="radio" [(ngModel)]="user.gender" formControlName="gender" [value]="gender.Male" [checked]="user.isMale()">
+                        <label for="male" class="radio no-padding-left">Masculino</label> &nbsp;
+                        <input id="female" name="gender" type="radio" [(ngModel)]="user.gender" formControlName="gender" [value]="gender.Female"
+                            [checked]="user.isFemale()">
+                        <label for="female" class="radio">Feminino</label>
+                    </div>
+                    <div [ngClass]="{ 'has-error': !signUpForm.controls['address.street'].valid && f.submitted }"
+                        class="form-group">
+                        <label for="address.street">Endereço</label>
+                        <input [(ngModel)]="user.address.street" formControlName="address.street" type="text" class="form-control" id="address.street">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div [ngClass]="{ 'has-error': !signUpForm.controls['address.number'].valid && f.submitted }"
+                                class="form-group">
+                                <label for="address.number">Número</label>
+                                <input [(ngModel)]="user.address.number" formControlName="address.number" type="text" class="form-control" id="address.number">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div [ngClass]="{ 'has-error': !signUpForm.controls['address.complement'].valid && f.submitted }"
+                                class="form-group">
+                                <label for="address.complement">Complemento</label>
+                                <input [(ngModel)]="user.address.complement" formControlName="address.complement" type="text" class="form-control" id="address.complement">
+                            </div>
+                        </div>
+                    </div>
+                    <div [ngClass]="{ 'has-error': !signUpForm.controls['address.district'].valid && f.submitted }"
+                        class="form-group">
+                        <label for="address.district">Bairro</label>
+                        <input [(ngModel)]="user.address.district" formControlName="address.district" type="text" class="form-control" id="address.district">
+                    </div>
+                    <div [ngClass]="{ 'has-error': !signUpForm.controls['address.city'].valid && f.submitted }"
+                        class="form-group">
+                        <label for="address.city">Cidade</label>
+                        <input [(ngModel)]="user.address.city" formControlName="address.city" type="text" class="form-control" id="address.city">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div [ngClass]="{ 'has-error': !signUpForm.controls['address.state'].valid && f.submitted }"
+                                class="form-group">
+                                <label for="address.state">Estado</label>
+                                <select [(ngModel)]="user.address.state" formControlName="address.state" class="form-control" id="address.state">
+                                    <option value="" selected>Selecione</option>
+                                    <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div [ngClass]="{ 'has-error': !signUpForm.controls['address.zipCode'].valid && f.submitted }"
+                                class="form-group">
+                                <label for="address.zipCode">CEP</label>
+                                <input [(ngModel)]="user.address.zipCode" formControlName="address.zipCode" type="text" maxlength="9" placeholder="99999-999" class="form-control"
+                                    id="address.zipCode">
+                            </div>
+                        </div>
+                    </div>
+                    <div [ngClass]="{ 'has-error': !signUpForm.controls['email'].valid && f.submitted }" class="form-group">
+                        <label for="email">E-mail</label>
+                        <input [(ngModel)]="user.email" formControlName="email" type="email" class="form-control" id="email">
+                    </div>
+                    <div [ngClass]="{ 'has-error': !signUpForm.controls['password'].valid && f.submitted }" class="form-group">
+                        <label>Senha</label>
+                        <input [(ngModel)]="user.password" formControlName="password" type="password" class="form-control" id="password">
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="submit" value="Salvar" class="btn rounded-btn" /> &nbsp;
+                        <a class="btn rounded-btn" [routerLink]="['/login']"> Logar </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

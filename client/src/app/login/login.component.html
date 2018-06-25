@@ -1,0 +1,22 @@
+<div class="login-page" [@routerTransition]>
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <img src="assets/images/logo.png" width="150px" class="user-avatar" />
+            <h1>App Store</h1>
+            <form #f="ngForm" [formGroup]="loginForm" (ngSubmit)="login()" novalidate class="text-left" role="form">
+                <div [ngClass]="{ 'has-error': !loginForm.controls['email'].valid && f.submitted }" class="form-group">
+                    <label for="email">E-mail</label>
+                    <input [(ngModel)]="credential.email" formControlName="email" type="email" class="form-control" id="email">
+                </div>
+                <div [ngClass]="{ 'has-error': !loginForm.controls['password'].valid && f.submitted }" class="form-group">
+                    <label>Senha</label>
+                    <input [(ngModel)]="credential.password" formControlName="password" type="password" class="form-control" id="password">
+                </div>
+                <div class="form-group text-center">
+                    <input type="submit" value="Entrar" class="btn rounded-btn" /> &nbsp;
+                    <a class="btn rounded-btn" [routerLink]="['/signup']"> Cadastrar </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
