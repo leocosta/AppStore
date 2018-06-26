@@ -22,9 +22,6 @@ namespace AppStore.Infra.IoC
     {
         public static void InitializeContainer(Container container)
         {
-            // Infra
-            container.Register<IMessageService, MailService>(Lifestyle.Scoped);
-
             // Repositories
             container.Register<DbContext, AppStoreContext>(Lifestyle.Scoped);
             container.Register<IUnitOfWork, UnitOfWork>(Lifestyle.Scoped);
@@ -34,9 +31,10 @@ namespace AppStore.Infra.IoC
             container.Register<IOrderRepository, OrderRepository>(Lifestyle.Scoped);
 
             // Domain Services
-            container.Register<IPaymentService, PaymentProvider>(Lifestyle.Scoped);
+            container.Register<IMessageService, MailService>(Lifestyle.Scoped);
             container.Register<INotificationService, NotificationService>(Lifestyle.Scoped);
-
+            container.Register<IPaymentService, PaymentProvider>(Lifestyle.Scoped);
+            
             // Application Services
             container.Register<IAuthenticationAppService, AuthenticationAppService>(Lifestyle.Scoped);
             container.Register<IUserAppService, UserAppService>(Lifestyle.Scoped);
